@@ -30,3 +30,4 @@
 .\stm32f0308_discovery\stm32f0xx_it.o: .\..\..\..\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h
 .\stm32f0308_discovery\stm32f0xx_it.o: ..\main.h
 .\stm32f0308_discovery\stm32f0xx_it.o: .\..\..\..\Utilities\STM32F0308-Discovery\stm32f0308_discovery.h
+.\stm32f0308_discovery\stm32f0xx_it.o: ..\sx9513.h

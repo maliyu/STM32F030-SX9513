@@ -27,6 +27,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "sx9513.h"
 
 /** @addtogroup STM32F0308-Discovery_Demo
   * @{
@@ -37,7 +38,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 static __IO uint32_t TimingDelay;
-uint8_t BlinkSpeed = 0;
+static uint32_t PreTimeingTick = 0;
 
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -61,57 +62,19 @@ int main(void)
   /* SysTick end of count event each 1ms */
   RCC_GetClocksFreq(&RCC_Clocks);
   SysTick_Config(RCC_Clocks.HCLK_Frequency / 1000);
-   
-  /* Initiate Blink Speed variable */ 
-  BlinkSpeed = 1;
-  
+	
+	SX9513_Init();
+	
+	//EXTI_GenerateSWInterrupt(EXTI_Line0);
+	
   while(1)
   {  
-    /* Check if the user button is pressed */
-    if(STM_EVAL_PBGetState(BUTTON_USER)== SET)
-    {
-      /* BlinkSpeed: 1 -> 2 -> 0, then re-cycle */
-      /* Turn on LD4 Blue LED during 1s each time User button is pressed */
-      STM_EVAL_LEDOn(LED4);
-      
-      /* wait for 1s */
-      Delay(1000);
-      
-      /* Turn off LD4 Blue LED after 1s each time User button is pressed */
-      STM_EVAL_LEDOff(LED4);
-      
-      /* Increment the blink speed counter */
-      BlinkSpeed++;
-      
-      /* Default value for blink speed counter */
-      if(BlinkSpeed == 3)
-      {  
-        BlinkSpeed = 0;
-      }
-    }
-    
-    /* Test on blink speed */
-    if(BlinkSpeed == 2)
-    {
-      /* LED3 toggles each 100 ms */
-      STM_EVAL_LEDToggle(LED3);
-      
-      /* maintain LED3 status for 100ms */
-      Delay(100);
-    }
-    else if(BlinkSpeed == 1)
-    {
-      /* LED3 toggles each 200 ms */
-      STM_EVAL_LEDToggle(LED3);
-      
-      /* maintain LED3 status for 200ms */
-      Delay(200);
-    }
-    else
-    {  
-      /* LED3 Off */
-      STM_EVAL_LEDOff(LED3);
-    }
+    if(PreTimeingTick++>10000000)
+		{
+			PreTimeingTick = 0;
+			SX9513_ReadBL0();
+			STM_EVAL_LEDToggle(LED4);
+		}
   }
 }
 

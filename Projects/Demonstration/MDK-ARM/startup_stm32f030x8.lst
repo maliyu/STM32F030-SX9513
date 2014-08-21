@@ -375,9 +375,9 @@ ARM Macro Assembler    Page 6
 Command Line: --debug --xref --cpu=Cortex-M0 --apcs=interwork --depend=.\stm32f
 0308_discovery\startup_stm32f030x8.d -o.\stm32f0308_discovery\startup_stm32f030
 x8.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Incl
-ude -IC:\Keil_v5\ARM\Inc\ST\STM32F0xx --predefine="__MICROLIB SETA 1" --list=st
-artup_stm32f030x8.lst ..\..\..\Libraries\CMSIS\Device\ST\STM32F0xx\Source\Templ
-ates\arm\startup_stm32f030x8.s
+ude -IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.0.3\Device\Include --predefine="
+__MICROLIB SETA 1" --list=startup_stm32f030x8.lst ..\..\..\Libraries\CMSIS\Devi
+ce\ST\STM32F0xx\Source\Templates\arm\startup_stm32f030x8.s
 
 
 

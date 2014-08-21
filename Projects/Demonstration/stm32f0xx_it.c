@@ -30,6 +30,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f0xx_it.h"
 #include "main.h"
+#include "sx9513.h"
 
 /** @addtogroup STM32F0308-Discovery_Demo
   * @{
@@ -124,5 +125,18 @@ void SysTick_Handler(void)
 /**
   * @}
   */
+
+/**
+  * @}
+  */
+void EXTI0_1_IRQHandler(void)
+{
+	//SX9513_IrqSrc();
+	
+	//STM_EVAL_LEDToggle(LED3);
+	SX9513_HandleBL0();
+	
+	EXTI_ClearITPendingBit(EXTI_Line0);
+}
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

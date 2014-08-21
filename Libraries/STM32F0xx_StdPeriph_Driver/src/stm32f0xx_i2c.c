@@ -894,8 +894,20 @@ void I2C_TransferHandling(I2C_TypeDef* I2Cx, uint16_t Address, uint8_t Number_By
   tmpreg &= (uint32_t)~((uint32_t)(I2C_CR2_SADD | I2C_CR2_NBYTES | I2C_CR2_RELOAD | I2C_CR2_AUTOEND | I2C_CR2_RD_WRN | I2C_CR2_START | I2C_CR2_STOP));
   
   /* update tmpreg */
-  tmpreg |= (uint32_t)(((uint32_t)Address & I2C_CR2_SADD) | (((uint32_t)Number_Bytes << 16 ) & I2C_CR2_NBYTES) | \
+	if((tmpreg & I2C_CR2_ADD10) == I2C_CR2_ADD10)
+	{
+		// 10-bit addressing mode
+		tmpreg |= (uint32_t)(((uint32_t)Address & I2C_CR2_SADD) | (((uint32_t)Number_Bytes << 16 ) & I2C_CR2_NBYTES) | \
             (uint32_t)ReloadEndMode | (uint32_t)StartStopMode);
+	}
+	else
+	{
+		// 7-bit addressing mode
+		tmpreg |= (uint32_t)((((uint32_t)Address & I2C_CR2_SADD) << 1) | (((uint32_t)Number_Bytes << 16 ) & I2C_CR2_NBYTES) | \
+            (uint32_t)ReloadEndMode | (uint32_t)StartStopMode);
+	}
+	/*tmpreg |= (uint32_t)(((uint32_t)Address & I2C_CR2_SADD) | (((uint32_t)Number_Bytes << 16 ) & I2C_CR2_NBYTES) | \
+            (uint32_t)ReloadEndMode | (uint32_t)StartStopMode);*/
   
   /* update CR2 register */
   I2Cx->CR2 = tmpreg;  
