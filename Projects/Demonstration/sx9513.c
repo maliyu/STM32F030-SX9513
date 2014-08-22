@@ -15,6 +15,7 @@
 #define SX9500_ADDR          ((uint16_t)(0x2B))
 
 static uint8_t IrqSrc;
+static uint8_t PreTouchStatus;
 static uint8_t TouchStatus;
 static uint8_t CapSenseUsefulDataMsb;
 static uint8_t CapSenseUsefulDataLsb;
@@ -201,7 +202,7 @@ void SX9513_Init(void)
 	
 	SX9500_RegRead(0x00);
 	SX9500_RegWrite(0x07,0x00);
-	SX9500_RegWrite(0x09, 0xE0);
+	SX9500_RegWrite(0x09, 0xE4);
 	SX9500_RegWrite(0x1F, 0x83);
 	SX9500_RegWrite(0x20, 0x83);
 	SX9500_RegWrite(0x21, 0x83);
@@ -222,8 +223,8 @@ void SX9513_Init(void)
 	SX9500_RegWrite(0x30, 0x10);
 	SX9500_RegWrite(0x31, 0x14);
 	SX9500_RegWrite(0x33, 0x0F);
-	SX9500_RegWrite(0x34, 0x41);
-	SX9500_RegWrite(0x35, 0x41);
+	SX9500_RegWrite(0x34, 0x40);
+	SX9500_RegWrite(0x35, 0x40);
 	SX9500_RegWrite(0x36, 0x1D);
 	SX9500_RegWrite(0x37, 0x1A);
 	SX9500_RegWrite(0x38, 0x00);
@@ -271,10 +272,12 @@ void SX9513_HandleBL0(void)
 	else if((IrqSrc & 0x20) == 0x20)
 	{
 		// detect release event
-		if((TouchStatus & 0x01) == 0x00)
+		if(((TouchStatus & 0x01) == 0x00) && ((PreTouchStatus & 0x01) == 0x01) )
 		{
 			// BL0
 			STM_EVAL_LEDToggle(LED3);
 		}
 	}
+	
+	PreTouchStatus = TouchStatus;
 }

@@ -2619,9 +2619,9 @@
       <ActiveTab>0</ActiveTab>
       <Doc>
         <Name>..\sx9513.c</Name>
-        <ColumnNumber>35</ColumnNumber>
-        <TopLine>261</TopLine>
-        <CurrentLine>274</CurrentLine>
+        <ColumnNumber>27</ColumnNumber>
+        <TopLine>213</TopLine>
+        <CurrentLine>229</CurrentLine>
         <Folding>0</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -2691,9 +2691,9 @@
       </Doc>
       <Doc>
         <Name>.\..\main.c</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>16</TopLine>
-        <CurrentLine>52</CurrentLine>
+        <ColumnNumber>54</ColumnNumber>
+        <TopLine>55</TopLine>
+        <CurrentLine>28</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

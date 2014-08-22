@@ -709,19 +709,19 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ..\..\..\Libraries\CMSIS\Device\ST\STM32F0xx\Source\Templates\arm\startup_stm32f030x8.s 0x00000000   Number         0  startup_stm32f030x8.o ABSOLUTE
     ..\..\..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_adc.c 0x00000000   Number         0  stm32f0xx_adc.o ABSOLUTE
     ..\..\..\Libraries\STM32F0xx_StdPeriph_Driver\src\stm32f0xx_cec.c 0x00000000   Number         0  stm32f0xx_cec.o ABSOLUTE
@@ -822,36 +822,37 @@ Image Symbol Table
     i.SX9500_RegRead                         0x080005e8   Section        0  sx9513.o(i.SX9500_RegRead)
     i.SX9500_RegWrite                        0x08000644   Section        0  sx9513.o(i.SX9500_RegWrite)
     i.SX9513_HandleBL0                       0x080006a0   Section        0  sx9513.o(i.SX9513_HandleBL0)
-    i.SX9513_Init                            0x080006d4   Section        0  sx9513.o(i.SX9513_Init)
-    i.SX9513_ReadBL0                         0x080008c0   Section        0  sx9513.o(i.SX9513_ReadBL0)
-    i.SYSCFG_EXTILineConfig                  0x08000914   Section        0  stm32f0xx_syscfg.o(i.SYSCFG_EXTILineConfig)
-    i.SetSysClock                            0x0800093c   Section        0  system_stm32f0xx.o(i.SetSysClock)
-    SetSysClock                              0x0800093d   Thumb Code    86  system_stm32f0xx.o(i.SetSysClock)
-    i.SysTick_Handler                        0x0800099c   Section        0  stm32f0xx_it.o(i.SysTick_Handler)
-    i.SystemInit                             0x080009a4   Section        0  system_stm32f0xx.o(i.SystemInit)
-    i.TimingDelay_Decrement                  0x08000a04   Section        0  main.o(i.TimingDelay_Decrement)
-    i.__scatterload_copy                     0x08000a18   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08000a26   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08000a28   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.main                                   0x08000a38   Section        0  main.o(i.main)
-    .constdata                               0x08000ab4   Section       28  stm32f0308_discovery.o(.constdata)
+    i.SX9513_Init                            0x080006dc   Section        0  sx9513.o(i.SX9513_Init)
+    i.SX9513_ReadBL0                         0x080008c8   Section        0  sx9513.o(i.SX9513_ReadBL0)
+    i.SYSCFG_EXTILineConfig                  0x0800091c   Section        0  stm32f0xx_syscfg.o(i.SYSCFG_EXTILineConfig)
+    i.SetSysClock                            0x08000944   Section        0  system_stm32f0xx.o(i.SetSysClock)
+    SetSysClock                              0x08000945   Thumb Code    86  system_stm32f0xx.o(i.SetSysClock)
+    i.SysTick_Handler                        0x080009a4   Section        0  stm32f0xx_it.o(i.SysTick_Handler)
+    i.SystemInit                             0x080009ac   Section        0  system_stm32f0xx.o(i.SystemInit)
+    i.TimingDelay_Decrement                  0x08000a0c   Section        0  main.o(i.TimingDelay_Decrement)
+    i.__scatterload_copy                     0x08000a20   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08000a2e   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08000a30   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.main                                   0x08000a40   Section        0  main.o(i.main)
+    .constdata                               0x08000abc   Section       28  stm32f0308_discovery.o(.constdata)
     .data                                    0x20000000   Section       12  stm32f0308_discovery.o(.data)
     .data                                    0x2000000c   Section       16  stm32f0xx_rcc.o(.data)
     APBAHBPrescTable                         0x2000000c   Data          16  stm32f0xx_rcc.o(.data)
     .data                                    0x2000001c   Section        8  main.o(.data)
     PreTimeingTick                           0x2000001c   Data           4  main.o(.data)
     TimingDelay                              0x20000020   Data           4  main.o(.data)
-    .data                                    0x20000024   Section       10  sx9513.o(.data)
+    .data                                    0x20000024   Section       11  sx9513.o(.data)
     IrqSrc                                   0x20000024   Data           1  sx9513.o(.data)
-    TouchStatus                              0x20000025   Data           1  sx9513.o(.data)
-    CapSenseUsefulDataMsb                    0x20000026   Data           1  sx9513.o(.data)
-    CapSenseUsefulDataLsb                    0x20000027   Data           1  sx9513.o(.data)
-    CapSenseAverageDataMsb                   0x20000028   Data           1  sx9513.o(.data)
-    CapSenseAverageDataLsb                   0x20000029   Data           1  sx9513.o(.data)
-    CapSenseDiffDataMsb                      0x2000002a   Data           1  sx9513.o(.data)
-    CapSenseDiffDataLsb                      0x2000002b   Data           1  sx9513.o(.data)
-    CapSenseCompMsb                          0x2000002c   Data           1  sx9513.o(.data)
-    CapSenseCompLsb                          0x2000002d   Data           1  sx9513.o(.data)
+    PreTouchStatus                           0x20000025   Data           1  sx9513.o(.data)
+    TouchStatus                              0x20000026   Data           1  sx9513.o(.data)
+    CapSenseUsefulDataMsb                    0x20000027   Data           1  sx9513.o(.data)
+    CapSenseUsefulDataLsb                    0x20000028   Data           1  sx9513.o(.data)
+    CapSenseAverageDataMsb                   0x20000029   Data           1  sx9513.o(.data)
+    CapSenseAverageDataLsb                   0x2000002a   Data           1  sx9513.o(.data)
+    CapSenseDiffDataMsb                      0x2000002b   Data           1  sx9513.o(.data)
+    CapSenseDiffDataLsb                      0x2000002c   Data           1  sx9513.o(.data)
+    CapSenseCompMsb                          0x2000002d   Data           1  sx9513.o(.data)
+    CapSenseCompLsb                          0x2000002e   Data           1  sx9513.o(.data)
     STACK                                    0x20000030   Section     1024  startup_stm32f030x8.o(STACK)
 
     Global Symbols
@@ -939,27 +940,27 @@ Image Symbol Table
     SVC_Handler                              0x080005e5   Thumb Code     2  stm32f0xx_it.o(i.SVC_Handler)
     SX9500_RegRead                           0x080005e9   Thumb Code    88  sx9513.o(i.SX9500_RegRead)
     SX9500_RegWrite                          0x08000645   Thumb Code    88  sx9513.o(i.SX9500_RegWrite)
-    SX9513_HandleBL0                         0x080006a1   Thumb Code    48  sx9513.o(i.SX9513_HandleBL0)
-    SX9513_Init                              0x080006d5   Thumb Code   480  sx9513.o(i.SX9513_Init)
-    SX9513_ReadBL0                           0x080008c1   Thumb Code    78  sx9513.o(i.SX9513_ReadBL0)
-    SYSCFG_EXTILineConfig                    0x08000915   Thumb Code    34  stm32f0xx_syscfg.o(i.SYSCFG_EXTILineConfig)
-    SysTick_Handler                          0x0800099d   Thumb Code     8  stm32f0xx_it.o(i.SysTick_Handler)
-    SystemInit                               0x080009a5   Thumb Code    84  system_stm32f0xx.o(i.SystemInit)
-    TimingDelay_Decrement                    0x08000a05   Thumb Code    16  main.o(i.TimingDelay_Decrement)
-    __scatterload_copy                       0x08000a19   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08000a27   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08000a29   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    main                                     0x08000a39   Thumb Code   104  main.o(i.main)
-    BUTTON_PIN                               0x08000ab4   Data           2  stm32f0308_discovery.o(.constdata)
-    BUTTON_EXTI_LINE                         0x08000ab6   Data           2  stm32f0308_discovery.o(.constdata)
-    BUTTON_PORT_SOURCE                       0x08000ab8   Data           2  stm32f0308_discovery.o(.constdata)
-    BUTTON_PIN_SOURCE                        0x08000aba   Data           2  stm32f0308_discovery.o(.constdata)
-    BUTTON_IRQn                              0x08000abc   Data           2  stm32f0308_discovery.o(.constdata)
-    GPIO_PIN                                 0x08000abe   Data           4  stm32f0308_discovery.o(.constdata)
-    BUTTON_CLK                               0x08000ac4   Data           4  stm32f0308_discovery.o(.constdata)
-    GPIO_CLK                                 0x08000ac8   Data           8  stm32f0308_discovery.o(.constdata)
-    Region$$Table$$Base                      0x08000ad0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08000af0   Number         0  anon$$obj.o(Region$$Table)
+    SX9513_HandleBL0                         0x080006a1   Thumb Code    54  sx9513.o(i.SX9513_HandleBL0)
+    SX9513_Init                              0x080006dd   Thumb Code   480  sx9513.o(i.SX9513_Init)
+    SX9513_ReadBL0                           0x080008c9   Thumb Code    78  sx9513.o(i.SX9513_ReadBL0)
+    SYSCFG_EXTILineConfig                    0x0800091d   Thumb Code    34  stm32f0xx_syscfg.o(i.SYSCFG_EXTILineConfig)
+    SysTick_Handler                          0x080009a5   Thumb Code     8  stm32f0xx_it.o(i.SysTick_Handler)
+    SystemInit                               0x080009ad   Thumb Code    84  system_stm32f0xx.o(i.SystemInit)
+    TimingDelay_Decrement                    0x08000a0d   Thumb Code    16  main.o(i.TimingDelay_Decrement)
+    __scatterload_copy                       0x08000a21   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08000a2f   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08000a31   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    main                                     0x08000a41   Thumb Code   104  main.o(i.main)
+    BUTTON_PIN                               0x08000abc   Data           2  stm32f0308_discovery.o(.constdata)
+    BUTTON_EXTI_LINE                         0x08000abe   Data           2  stm32f0308_discovery.o(.constdata)
+    BUTTON_PORT_SOURCE                       0x08000ac0   Data           2  stm32f0308_discovery.o(.constdata)
+    BUTTON_PIN_SOURCE                        0x08000ac2   Data           2  stm32f0308_discovery.o(.constdata)
+    BUTTON_IRQn                              0x08000ac4   Data           2  stm32f0308_discovery.o(.constdata)
+    GPIO_PIN                                 0x08000ac6   Data           4  stm32f0308_discovery.o(.constdata)
+    BUTTON_CLK                               0x08000acc   Data           4  stm32f0308_discovery.o(.constdata)
+    GPIO_CLK                                 0x08000ad0   Data           8  stm32f0308_discovery.o(.constdata)
+    Region$$Table$$Base                      0x08000ad8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08000af8   Number         0  anon$$obj.o(Region$$Table)
     BUTTON_PORT                              0x20000000   Data           4  stm32f0308_discovery.o(.data)
     GPIO_PORT                                0x20000004   Data           8  stm32f0308_discovery.o(.data)
     __initial_sp                             0x20000430   Data           0  startup_stm32f030x8.o(STACK)
@@ -972,9 +973,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000c1
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00000b20, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00000b28, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00000af0, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00000af8, Max: 0x00010000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1025,21 +1026,21 @@ Memory Map of the image
     0x080005e6   0x00000002   PAD
     0x080005e8   0x0000005c   Code   RO         3553    i.SX9500_RegRead    sx9513.o
     0x08000644   0x0000005c   Code   RO         3554    i.SX9500_RegWrite   sx9513.o
-    0x080006a0   0x00000034   Code   RO         3555    i.SX9513_HandleBL0  sx9513.o
-    0x080006d4   0x000001ec   Code   RO         3556    i.SX9513_Init       sx9513.o
-    0x080008c0   0x00000054   Code   RO         3558    i.SX9513_ReadBL0    sx9513.o
-    0x08000914   0x00000028   Code   RO         2467    i.SYSCFG_EXTILineConfig  stm32f0xx_syscfg.o
-    0x0800093c   0x00000060   Code   RO            3    i.SetSysClock       system_stm32f0xx.o
-    0x0800099c   0x00000008   Code   RO         3505    i.SysTick_Handler   stm32f0xx_it.o
-    0x080009a4   0x00000060   Code   RO            5    i.SystemInit        system_stm32f0xx.o
-    0x08000a04   0x00000014   Code   RO         3455    i.TimingDelay_Decrement  main.o
-    0x08000a18   0x0000000e   Code   RO         3626    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x08000a26   0x00000002   Code   RO         3627    i.__scatterload_null  mc_p.l(handlers.o)
-    0x08000a28   0x0000000e   Code   RO         3628    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x08000a36   0x00000002   PAD
-    0x08000a38   0x0000007c   Code   RO         3456    i.main              main.o
-    0x08000ab4   0x0000001c   Data   RO          134    .constdata          stm32f0308_discovery.o
-    0x08000ad0   0x00000020   Data   RO         3624    Region$$Table       anon$$obj.o
+    0x080006a0   0x0000003c   Code   RO         3555    i.SX9513_HandleBL0  sx9513.o
+    0x080006dc   0x000001ec   Code   RO         3556    i.SX9513_Init       sx9513.o
+    0x080008c8   0x00000054   Code   RO         3558    i.SX9513_ReadBL0    sx9513.o
+    0x0800091c   0x00000028   Code   RO         2467    i.SYSCFG_EXTILineConfig  stm32f0xx_syscfg.o
+    0x08000944   0x00000060   Code   RO            3    i.SetSysClock       system_stm32f0xx.o
+    0x080009a4   0x00000008   Code   RO         3505    i.SysTick_Handler   stm32f0xx_it.o
+    0x080009ac   0x00000060   Code   RO            5    i.SystemInit        system_stm32f0xx.o
+    0x08000a0c   0x00000014   Code   RO         3455    i.TimingDelay_Decrement  main.o
+    0x08000a20   0x0000000e   Code   RO         3626    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x08000a2e   0x00000002   Code   RO         3627    i.__scatterload_null  mc_p.l(handlers.o)
+    0x08000a30   0x0000000e   Code   RO         3628    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x08000a3e   0x00000002   PAD
+    0x08000a40   0x0000007c   Code   RO         3456    i.main              main.o
+    0x08000abc   0x0000001c   Data   RO          134    .constdata          stm32f0308_discovery.o
+    0x08000ad8   0x00000020   Data   RO         3624    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000430, Max: 0x00002000, ABSOLUTE)
@@ -1049,8 +1050,8 @@ Memory Map of the image
     0x20000000   0x0000000c   Data   RW          135    .data               stm32f0308_discovery.o
     0x2000000c   0x00000010   Data   RW         1737    .data               stm32f0xx_rcc.o
     0x2000001c   0x00000008   Data   RW         3457    .data               main.o
-    0x20000024   0x0000000a   Data   RW         3559    .data               sx9513.o
-    0x2000002e   0x00000002   PAD
+    0x20000024   0x0000000b   Data   RW         3559    .data               sx9513.o
+    0x2000002f   0x00000001   PAD
     0x20000030   0x00000400   Zero   RW          119    STACK               startup_stm32f030x8.o
 
 
@@ -1071,13 +1072,13 @@ Image component sizes
         80         10          0          0          0       2232   stm32f0xx_misc.o
        328         48          0         16          0      14717   stm32f0xx_rcc.o
         40          6          0          0          0        656   stm32f0xx_syscfg.o
-       812         30          0         10          0       3445   sx9513.o
+       820         32          0         11          0       3477   sx9513.o
        192         22          0          0          0     114661   system_stm32f0xx.o
 
     ----------------------------------------------------------------------
-      2416        202        252         48       1024     174079   Object Totals
+      2424        204        252         48       1024     174111   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        10          0          0          2          0          0   (incl. Padding)
+        10          0          0          1          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1115,15 +1116,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      2548        218        252         48       1024     172919   Grand Totals
-      2548        218        252         48       1024     172919   ELF Image Totals
-      2548        218        252         48          0          0   ROM Totals
+      2556        220        252         48       1024     172951   Grand Totals
+      2556        220        252         48       1024     172951   ELF Image Totals
+      2556        220        252         48          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2800 (   2.73kB)
+    Total RO  Size (Code + RO Data)                 2808 (   2.74kB)
     Total RW  Size (RW Data + ZI Data)              1072 (   1.05kB)
-    Total ROM Size (Code + RO Data + RW Data)       2848 (   2.78kB)
+    Total ROM Size (Code + RO Data + RW Data)       2856 (   2.79kB)
 
 ==============================================================================
 
