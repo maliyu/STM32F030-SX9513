@@ -202,7 +202,16 @@ void SX9513_Init(void)
 	
 	SX9500_RegRead(0x00);
 	SX9500_RegWrite(0x07,0x00);
+	SX9500_RegWrite(0x08,0x00);
 	SX9500_RegWrite(0x09, 0xE4);
+	SX9500_RegWrite(0x0C, 0xFF);	// assign LED engine 1
+	SX9500_RegWrite(0x0D, 0xFF);	// not assign LED engine 2
+	SX9500_RegWrite(0x0E, 0x10);	// LED PWM Frequency 
+	SX9500_RegWrite(0x0F, 0x00);	
+	SX9500_RegWrite(0x10, 0x00);	// Set LED engine 1 and LED engine 2 idle intensity level
+	SX9500_RegWrite(0x11, 0x00);	// Set time delay from loss of touch/prox to start of fade out.
+	SX9500_RegWrite(0x12, 0xFF);	// Set LED engine 1 on intensity level.
+	SX9500_RegWrite(0x13, 0x08);	// LED Engine 1 Fade In/Out Timing
 	SX9500_RegWrite(0x1F, 0x83);
 	SX9500_RegWrite(0x20, 0x83);
 	SX9500_RegWrite(0x21, 0x83);

@@ -709,7 +709,7 @@ I (.\..\..\..\Libraries\STM32F0xx_StdPeriph_Driver\inc\stm32f0xx_misc.h)(0x52580
 I (..\main.h)(0x53F5864E)
 I (.\..\..\..\Utilities\STM32F0308-Discovery\stm32f0308_discovery.h)(0x525803D7)
 I (..\sx9513.h)(0x53F5B7A6)
-F (..\sx9513.c)(0x53F6B57C)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\..\ -I.\..\..\..\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\..\..\..\Libraries\CMSIS\Include -I.\..\..\..\Libraries\STM32F0xx_StdPeriph_Driver\inc -I.\..\..\..\Utilities\STM32F0308-Discovery-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.0.3\Device\Include-DSTM32F030 -DUSE_STDPERIPH_DRIVER -DSTM32F0XX -o .\stm32f0308_discovery\sx9513.o --omf_browse .\stm32f0308_discovery\sx9513.crf --depend .\stm32f0308_discovery\sx9513.d)
+F (..\sx9513.c)(0x53F71286)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\..\ -I.\..\..\..\Libraries\CMSIS\Device\ST\STM32F0xx\Include -I.\..\..\..\Libraries\CMSIS\Include -I.\..\..\..\Libraries\STM32F0xx_StdPeriph_Driver\inc -I.\..\..\..\Utilities\STM32F0308-Discovery-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.1\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.0.3\Device\Include-DSTM32F030 -DUSE_STDPERIPH_DRIVER -DSTM32F0XX -o .\stm32f0308_discovery\sx9513.o --omf_browse .\stm32f0308_discovery\sx9513.crf --depend .\stm32f0308_discovery\sx9513.d)
 I (.\..\..\..\Libraries\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x525803EF)
 I (.\..\..\..\Libraries\CMSIS\Include\core_cm0.h)(0x525803DB)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
