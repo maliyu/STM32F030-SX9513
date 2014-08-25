@@ -25,6 +25,9 @@ static uint8_t CapSenseDiffDataMsb;
 static uint8_t CapSenseDiffDataLsb;
 static uint8_t CapSenseCompMsb;
 static uint8_t CapSenseCompLsb;
+static uint8_t PowerFunc = 0;
+static uint8_t SpeedFunc = 0;
+static uint8_t TimerFunc = 0;
 
 /**
   * @brief  This function reads data from a register of the SX9500 EVK.
@@ -204,8 +207,8 @@ void SX9513_Init(void)
 	SX9500_RegWrite(0x07,0x00);
 	SX9500_RegWrite(0x08,0x00);
 	SX9500_RegWrite(0x09, 0xE4);
-	SX9500_RegWrite(0x0C, 0xFF);	// assign LED engine 1
-	SX9500_RegWrite(0x0D, 0xFF);	// not assign LED engine 2
+	SX9500_RegWrite(0x0C, 0x00);	// assign BL0 to LED engine 1
+	SX9500_RegWrite(0x0D, 0x00);	// not assign LED engine 2
 	SX9500_RegWrite(0x0E, 0x10);	// LED PWM Frequency 
 	SX9500_RegWrite(0x0F, 0x00);	
 	SX9500_RegWrite(0x10, 0x00);	// Set LED engine 1 and LED engine 2 idle intensity level
@@ -231,7 +234,7 @@ void SX9513_Init(void)
 	SX9500_RegWrite(0x2F, 0x60);
 	SX9500_RegWrite(0x30, 0x10);
 	SX9500_RegWrite(0x31, 0x14);
-	SX9500_RegWrite(0x33, 0x0F);
+	SX9500_RegWrite(0x33, 0x05);
 	SX9500_RegWrite(0x34, 0x40);
 	SX9500_RegWrite(0x35, 0x40);
 	SX9500_RegWrite(0x36, 0x1D);
@@ -240,7 +243,7 @@ void SX9513_Init(void)
 	SX9500_RegWrite(0x3B, 0x00);
 	SX9500_RegWrite(0x3E, 0xFF);
 	
-	SX9500_RegWrite(0x1E, 0x0F);
+	SX9500_RegWrite(0x1E, 0x01);
 	
 	//GPIO_SetBits(GPIOB, GPIO_Pin_8);
 }
@@ -264,8 +267,14 @@ void SX9513_ReadBL0(void)
 	CapSenseCompLsb = SX9500_RegRead(0x6B);
 }
 
-void SX9513_HandleBL0(void)
+/* BL0 - power button with LED0 */
+/* BL1 - speed+ button with LED1, LED2, LED3 */
+/* BL2 - speed- button with LED1, LED2, LED3 */
+/* BL3 - timer button with LED4, LED5, LED6, LED7 */
+void SX9513_Handler(void)
 {
+	uint8_t tmp;
+	
 	IrqSrc = SX9500_RegRead(0x00);
 	TouchStatus = SX9500_RegRead(0x01);
 	
@@ -275,7 +284,108 @@ void SX9513_HandleBL0(void)
 		if((TouchStatus & 0x01) == 0x01)
 		{
 			// BL0
-			STM_EVAL_LEDToggle(LED3);
+			// LED0 on, LED1 on, other LED off
+			//STM_EVAL_LEDToggle(LED3);
+			if(PowerFunc == 0)
+			{
+				SX9500_RegWrite(0x0C, 0x03);
+				SX9500_RegWrite(0x10, 0xFF);
+				SX9500_RegWrite(0x1E, 0x0F);
+				PowerFunc = 1;
+				SpeedFunc = 1;
+				TimerFunc = 0;
+			}
+			else
+			{
+				SX9500_RegWrite(0x0C, 0x00);
+				SX9500_RegWrite(0x10, 0x00);
+				SX9500_RegWrite(0x1E, 0x01);
+				PowerFunc = 0;
+			}
+		}
+		else if((TouchStatus & 0x02) == 0x02)
+		{
+			// BL1
+			if(SpeedFunc == 1)
+			{
+				// LED1 off, LED2 on, LED3 off
+				tmp = SX9500_RegRead(0x0C);
+				tmp &= 0xF1;
+				tmp |= 0x04;
+				SX9500_RegWrite(0x0C, tmp);
+				SpeedFunc = 2;
+			}
+			else if(SpeedFunc == 2)
+			{
+				// LED1 off, LED2 off, LED3 on
+				tmp = SX9500_RegRead(0x0C);
+				tmp &= 0xF1;
+				tmp |= 0x08;
+				SX9500_RegWrite(0x0C, tmp);
+				SpeedFunc = 3;
+			}
+		}
+		else if((TouchStatus & 0x04) == 0x04)
+		{
+			// BL2
+			if(SpeedFunc == 3)
+			{
+				// LED1 off, LED2 on, LED3 off
+				tmp = SX9500_RegRead(0x0C);
+				tmp &= 0xF1;
+				tmp |= 0x04;
+				SX9500_RegWrite(0x0C, tmp);
+				SpeedFunc = 2;
+			}
+			else if(SpeedFunc == 2)
+			{
+				// LED1 on, LED2 off, LED3 off
+				tmp = SX9500_RegRead(0x0C);
+				tmp &= 0xF1;
+				tmp |= 0x02;
+				SX9500_RegWrite(0x0C, tmp);
+				SpeedFunc = 1;
+			}
+		}
+		else if((TouchStatus & 0x08) == 0x08)
+		{
+			// BL3
+			if(TimerFunc == 0)
+			{
+				// LED4 on, LED5 off, LED6 off, LED7 off
+				tmp = SX9500_RegRead(0x0C);
+				tmp &= 0x0F;
+				tmp |= 0x10;
+				SX9500_RegWrite(0x0C, tmp);
+				TimerFunc = 1;
+			}
+			else if(TimerFunc == 1)
+			{
+				// LED4 off, LED5 on, LED6 off, LED7 off
+				tmp = SX9500_RegRead(0x0C);
+				tmp &= 0x0F;
+				tmp |= 0x20;
+				SX9500_RegWrite(0x0C, tmp);
+				TimerFunc = 2;
+			}
+			else if(TimerFunc == 2)
+			{
+				// LED4 off, LED5 off, LED6 on, LED7 off
+				tmp = SX9500_RegRead(0x0C);
+				tmp &= 0x0F;
+				tmp |= 0x40;
+				SX9500_RegWrite(0x0C, tmp);
+				TimerFunc = 3;
+			}
+			else if(TimerFunc == 3)
+			{
+				// LED4 off, LED5 off, LED6 off, LED7 on
+				tmp = SX9500_RegRead(0x0C);
+				tmp &= 0x0F;
+				tmp |= 0x80;
+				SX9500_RegWrite(0x0C, tmp);
+				TimerFunc = 0;
+			}
 		}
 	}
 	else if((IrqSrc & 0x20) == 0x20)
@@ -284,7 +394,8 @@ void SX9513_HandleBL0(void)
 		if(((TouchStatus & 0x01) == 0x00) && ((PreTouchStatus & 0x01) == 0x01) )
 		{
 			// BL0
-			STM_EVAL_LEDToggle(LED3);
+			//STM_EVAL_LEDToggle(LED3);
+			
 		}
 	}
 	

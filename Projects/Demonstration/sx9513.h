@@ -15,6 +15,6 @@
 void SX9513_Init(void);
 void SX9513_IrqSrc(void);
 void SX9513_ReadBL0(void);
-void SX9513_HandleBL0(void);
+void SX9513_Handler(void);
 
 #endif

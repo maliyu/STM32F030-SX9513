@@ -131,10 +131,7 @@ void SysTick_Handler(void)
   */
 void EXTI0_1_IRQHandler(void)
 {
-	//SX9513_IrqSrc();
-	
-	//STM_EVAL_LEDToggle(LED3);
-	SX9513_HandleBL0();
+	SX9513_Handler();
 	
 	EXTI_ClearITPendingBit(EXTI_Line0);
 }
